@@ -4,7 +4,11 @@ import Utilities from './utilities.js';
 
 
 
-describe('UUID Management', () => {
+/**
+ * Fisher-Yates Shuffle
+ * Tests that cover the shuffling of arrays.
+ */
+describe('Array Shuffling', () => {
   beforeAll(() => { });
 
   afterAll(() => { });
@@ -13,29 +17,41 @@ describe('UUID Management', () => {
 
   afterEach(() => { });
 
-  test('can generate a valid id', () => {
-    const uuid = Utilities.generateUUID();
-    expect(typeof uuid).toBe('string');
-    expect(uuid.length).toBe(36);
-    expect(Utilities.validateUUID(uuid)).toBe(true);
-    expect(
-      /^[a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}$/.test(uuid),
-    ).toBe(true);
+  test('can shuffle an array of strings', () => {
+    const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+    expect(Utilities.shuffle(arr)).not.toEqual(arr);
   });
 
-  test('can identify invalid uuids', () => {
-    expect(Utilities.validateUUID()).toBe(false);
-    expect(Utilities.validateUUID(123)).toBe(false);
-    expect(Utilities.validateUUID(undefined)).toBe(false);
-    expect(Utilities.validateUUID(null)).toBe(false);
-    expect(Utilities.validateUUID('')).toBe(false);
-    expect(Utilities.validateUUID({})).toBe(false);
-    expect(Utilities.validateUUID('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d')).toBe(true);
-    expect(Utilities.validateUUID('9b1deb4d-3b7d4bad-9bdd-2b0d7b3dcb6d')).toBe(false);
-    expect(Utilities.validateUUID('somethingelse')).toBe(false);
-    expect(Utilities.validateUUID('9b1deb4d-3%7d-4bad-9bdd-2b0d7b3d-b6d')).toBe(false);
-    expect(Utilities.validateUUID('d9428888-122b-11e1-b85c-61cd3cbb3210')).toBe(false);
-    expect(Utilities.validateUUID('c106a26a-21bb-5538-8bf2-57095d1976c1')).toBe(false);
-    expect(Utilities.validateUUID('630eb68f-e0fa-5ecc-887a-7c7a62614681')).toBe(false);
+  test('can shuffle an array of numbers', () => {
+    const arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+    expect(Utilities.shuffle(arr)).not.toEqual(arr);
+  });
+
+  test('can shuffle an array of objects', () => {
+    const arr = [
+      { foo: 1, bar: 'XS' },
+      { foo: 2, bar: 'Panther' },
+      { foo: 5, bar: 'Bull', active: true },
+      { foo: 21, bar: 'Bear', active: true, value: 88 },
+      { foo: 777, bar: 'Ole!', active: false, invalid: undefined },
+      { foo: 55, bar: 'Pandas!', children: [0, 1, 2] },
+      { foo: 89, bar: 'Nnn', children: ['0', '1', '2'] },
+    ];
+    expect(Utilities.shuffle(arr)).not.toEqual(arr);
+  });
+
+  test('can shuffle an array of mixed values', () => {
+    const arr = [
+      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+      { foo: 1, bar: 'XS' },
+      { foo: 2, bar: 'Panther' },
+      { foo: 5, bar: 'Bull', active: true },
+      { foo: 21, bar: 'Bear', active: true, value: 88 },
+      { foo: 777, bar: 'Ole!', active: false, invalid: undefined },
+      { foo: 55, bar: 'Pandas!', children: [0, 1, 2] },
+      { foo: 89, bar: 'Nnn', children: ['0', '1', '2'] },
+      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+    ];
+    expect(Utilities.shuffle(arr)).not.toEqual(arr);
   });
 });
