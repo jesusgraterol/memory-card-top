@@ -27,7 +27,7 @@ class DeckService {
     if (handSize > DeckService.#cards.length) {
       throw new Error(`The handSize cannot exceed the total number of cards in the deck (${DeckService.#cards}).`);
     }
-    const shuffledCards = DeckService.shuffleCards(DeckService.#cards);
+    const shuffledCards = DeckService.shuffle(DeckService.#cards);
     return shuffledCards.slice(0, handSize);
   }
 
@@ -41,7 +41,7 @@ class DeckService {
    * @param {*} rawArr
    * @returns Array<any>
    */
-  static shuffleCards(rawArr) {
+  static shuffle(rawArr) {
     const arr = rawArr.slice();
     let i = arr.length;
     let j;

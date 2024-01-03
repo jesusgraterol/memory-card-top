@@ -27,7 +27,7 @@ describe('Hand Building', () => {
 
   test('can build a hand and shuffle it', () => {
     const hand = DeckService.buildHand(16);
-    expect(DeckService.shuffleCards(hand)).not.toEqual(hand);
+    expect(DeckService.shuffle(hand)).not.toEqual(hand);
   });
 });
 
@@ -50,12 +50,12 @@ describe('Array Shuffling', () => {
 
   test('can shuffle an array of strings', () => {
     const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
-    expect(DeckService.shuffleCards(arr)).not.toEqual(arr);
+    expect(DeckService.shuffle(arr)).not.toEqual(arr);
   });
 
   test('can shuffle an array of numbers', () => {
     const arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-    expect(DeckService.shuffleCards(arr)).not.toEqual(arr);
+    expect(DeckService.shuffle(arr)).not.toEqual(arr);
   });
 
   test('can shuffle an array of objects', () => {
@@ -68,7 +68,7 @@ describe('Array Shuffling', () => {
       { foo: 55, bar: 'Pandas!', children: [0, 1, 2] },
       { foo: 89, bar: 'Nnn', children: ['0', '1', '2'] },
     ];
-    expect(DeckService.shuffleCards(arr)).not.toEqual(arr);
+    expect(DeckService.shuffle(arr)).not.toEqual(arr);
   });
 
   test('can shuffle an array of mixed values', () => {
@@ -83,6 +83,6 @@ describe('Array Shuffling', () => {
       { foo: 89, bar: 'Nnn', children: ['0', '1', '2'] },
       1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
     ];
-    expect(DeckService.shuffleCards(arr)).not.toEqual(arr);
+    expect(DeckService.shuffle(arr)).not.toEqual(arr);
   });
 });
