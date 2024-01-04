@@ -6,7 +6,9 @@ This application implements the popular "Memory Card" game that enables users to
 
 The key features are:
 
-- ...
+- Ability to play independently
+- Cards with significant differences for a better gaming experience
+- Ability to play as many times as desired
 - Cross-Platform Compatibility
 
 
