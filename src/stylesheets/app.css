@@ -182,10 +182,32 @@ body:has(.game-result-container) {
  * MAIN CONTAINER *
  **************** */
 #appContainer > main {
-
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 25px;
 }
 
+#appContainer > main button {
+  border:none;
+  padding:0;
+  animation: fadein 0.3s ease-in;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+  cursor:pointer;
+}
+#appContainer > main button:focus {
+  outline: none;
+}
 
+/* Hover & Focus */
+#appContainer > main button:hover{
+  opacity: 0.5;
+}
+
+/* Active */
+#appContainer > main button:active {
+  transform: scale(0.92)
+}
 
 
 
@@ -210,6 +232,7 @@ body:has(.game-result-container) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: fadein 0.3s ease-in;
   z-index: 2;
 }
 .game-result-container h2 {
@@ -238,13 +261,13 @@ body:has(.game-result-container) {
 }
 
 /* Hover & Focus */
-.game-result-container button:hover:not(:disabled),
-.game-result-container button:focus:not(:disabled) {
+.game-result-container button:hover,
+.game-result-container button:focus {
   background-color: var(--primary-contrast-color);
 }
 
 /* Active */
-.game-result-container button:active:not(:disabled) {
+.game-result-container button:active {
   transform: scale(0.92)
 }
 
@@ -317,6 +340,12 @@ body:has(.game-result-container) {
   }
 
 
-  
 
+/* ****************
+ * MAIN CONTAINER *
+ **************** */
+  #appContainer > main {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 15px;
+  }
 }
