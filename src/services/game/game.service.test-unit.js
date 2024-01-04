@@ -59,6 +59,7 @@ describe('Game Flow', () => {
 
     expect(game.score).toBe(1);
     expect(game.gameEnded).toBe(true);
+    expect(game.highestScore).toBe(1);
   });
 
 
@@ -75,6 +76,7 @@ describe('Game Flow', () => {
 
     expect(game.score).toBe(16);
     expect(game.gameEnded).toBe(true);
+    expect(game.highestScore).toBe(16);
   });
 
 

@@ -16,6 +16,9 @@ class GameService {
   // the state of the game, if true means the player won or lost
   #gameEnded = false;
 
+  // the highest score recorded in the session
+  #highestScore = 0;
+
   constructor (handSize) {
     this.#handSize = handSize;
   }
@@ -37,6 +40,10 @@ class GameService {
 
   get gameEnded() {
     return this.#gameEnded;
+  }
+
+  get highestScore() {
+    return this.#highestScore;
   }
 
 
@@ -75,6 +82,13 @@ class GameService {
 
       // if the game has not ended, shuffle the hand
       if (!this.#gameEnded) this.#hand = DeckService.shuffle(this.#hand);
+    }
+
+    // if the game ended, update the highest score (if applies)
+    if (this.#gameEnded) {
+      this.#highestScore = this.#clicked.length > this.#highestScore 
+        ? this.#clicked.length 
+        : this.#highestScore;
     }
   }
 }
